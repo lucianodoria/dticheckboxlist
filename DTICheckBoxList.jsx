@@ -6,7 +6,6 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
 import Paper from '@material-ui/core/Paper';
-import cn from 'classnames';
 import { FormControlLabel } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) =>
@@ -23,9 +22,6 @@ const useStyles = makeStyles((theme) =>
     checkBoxItem: {
       paddingLeft: 5,
     },
-    checked: {
-      color: '#3f51b5',
-    },
     listItemIcon: {
       minWidth: 40,
       color: '#3f51b5',
@@ -37,13 +33,10 @@ const useStyles = makeStyles((theme) =>
     button: {
       margin: theme.spacing(0.5, 0),
     },
-    checkBoxSelected: {
-      backgroundColor: '#f7f7f7',
-    },
   }),
 );
 
-export default function DTICheckBoxList(props) {
+export function DTICheckBoxList(props) {
   const classes = useStyles();
 
   const [checkedAll, setStateCheckedAll] = React.useState(false);
@@ -92,17 +85,24 @@ export default function DTICheckBoxList(props) {
 
   const customDTICheckBoxList = () => (
     <>
-      <FormControlLabel
-        control={
-          <Checkbox
-            checked={checkedAll}
-            onChange={checkAllhandleChange}
-            name="checkedB"
-            color="primary"
-          />
-        }
-        label="Selecionar todos"
-      />
+      {props.showSelectedAll &&
+        <FormControlLabel
+        style={{
+          color: props.checkBoxSelectedAllLabelColor,
+        }} 
+          control={
+            <Checkbox
+              checked={checkedAll}
+              onChange={checkAllhandleChange}
+              name="checkedB"
+              style={{
+                color: props.checkBoxSelectedAllColor,
+              }} 
+            />
+          }
+          label="Selecionar todos"
+        />
+      }
       <Paper className={classes.paper}>
         <List dense component="div" role="list" className={classes.list}>
           {props.items.map((data, index) => {
@@ -114,21 +114,31 @@ export default function DTICheckBoxList(props) {
               <ListItem
                 key={index}
                 role="listitem"
-                className={cn([classes.checkBoxItem, checked ? classes.checkBoxSelected : ''])}
+                className={classes.checkBoxItem}
+                style={{
+                  backgroundColor: checked ? props.backgroundColorCheckBoxSelected : '',
+                }}
                 button
                 onClick={handleToggle(data)}
               >
                 <ListItemIcon className={classes.listItemIcon}>
                   <Checkbox
-                    classes={{ checked: classes.checked }}
+                    classes={{ checked: props.checkBoxCheckedColor }}
                     checked={checked}
                     tabIndex={-1}
                     disableRipple={false}
-                    color="primary"
                     inputProps={{ 'aria-labelledby': labelId }}
+                    style={{
+                      color: props.checkBoxColor,
+                    }}
                   />
                 </ListItemIcon>
-                <ListItemText id={labelId} primary={data.label} />
+                <ListItemText
+                  id={labelId}
+                  primary={data.label}
+                  style={{
+                    color: props.checkBoxLabelColor,
+                  }} />
               </ListItem>
             );
           })}
