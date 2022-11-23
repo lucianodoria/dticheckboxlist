@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import { makeStyles, createStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme) =>
     },
     checkBoxItem: {
       paddingLeft: 5,
+    },
+    checked: {
+      color: '#3f51b5',
     },
     listItemIcon: {
       minWidth: 40,

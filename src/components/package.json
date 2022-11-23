@@ -1,0 +1,15 @@
+{
+  "name": "react-dticheckboxlist",
+  "version": "1.0.0",
+  "description": "Componente React de lista com checkbox",
+  "main": "DTICheckBoxList",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Luciano Dória",
+  "license": "ISC",
+  "peerDependencies": {
+    "@material-ui/core": "^4.12.4",
+    "react": "^16.0"
+  }
+}
