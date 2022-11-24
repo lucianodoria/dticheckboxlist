@@ -1,3 +1,3 @@
-import {DTICheckBoxList} from './DTICheckBoxList.jsx';
+import DTICheckBoxList from './DTICheckBoxListComponent';
 
 export default DTICheckBoxList;

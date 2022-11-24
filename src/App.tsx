@@ -5,7 +5,7 @@ import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Toolbar from '@material-ui/core/Toolbar';
 import { useState } from 'react';
-import {DTICheckBoxList} from '../components/DTICheckBoxList';
+import DTICheckBoxList from './components/DTICheckBoxListComponent';
 import './App.css';
 
 function App() {

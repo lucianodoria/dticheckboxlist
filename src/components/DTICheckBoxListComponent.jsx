@@ -38,8 +38,8 @@ const useStyles = makeStyles((theme) =>
     },
   }),
 );
-
-export function DTICheckBoxList(props) {
+//export default class Calendar extends Component
+const DTICheckBoxList = (props) => {
   const classes = useStyles();
 
   const [checkedAll, setStateCheckedAll] = React.useState(false);
@@ -86,8 +86,8 @@ export function DTICheckBoxList(props) {
     setStateCheckedAll(checked);
   };
 
-  const customDTICheckBoxList = () => (
-    <>
+  return (
+    <div>
       {props.showSelectedAll &&
         <FormControlLabel
         style={{
@@ -148,8 +148,10 @@ export function DTICheckBoxList(props) {
           <ListItem />
         </List>
       </Paper>
-    </>
+    </div>
   );
 
-  return customDTICheckBoxList();
+  //return customDTICheckBoxList();
 }
+
+export default DTICheckBoxList;
