@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Grid } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar';
@@ -6,7 +6,7 @@ import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Toolbar from '@material-ui/core/Toolbar';
 import { useState } from 'react';
-import DTICheckBoxList from 'react-dticheckboxlist'
+import DTICheckBoxList from 'react-dticheckboxlist';
 
 const App = () => {
   const items =
