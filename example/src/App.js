@@ -1,25 +1,14 @@
-# react-dticheckboxlist
-
-> Componente React de lista com checkbox
-
-[![NPM](https://img.shields.io/npm/v/react-dticheckboxlist.svg)](https://www.npmjs.com/package/react-dticheckboxlist) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-
-## Install
-
-```bash
-npm install --save react-dticheckboxlist
-```
-<p align="center">
-    <img alt="read before" src="screenshot3.png" />
-</p>
-
-## Código de exemplo de como usar
-
-```jsx
-import React, { Component } from 'react'
+import React from 'react'
+import { Grid } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import AppBar from '@material-ui/core/AppBar';
+import Box from '@material-ui/core/Box';
+import Container from '@material-ui/core/Container';
+import Toolbar from '@material-ui/core/Toolbar';
+import { useState } from 'react';
 import DTICheckBoxList from 'react-dticheckboxlist'
 
-class Example extends Component {
+const App = () => {
   const items =
     [{
       "id": "1",
@@ -61,9 +50,25 @@ class Example extends Component {
       });
     };
 
-  render() {
-    return
-    <DTICheckBoxList
+  return (
+  <Container>
+  <AppBar position="static">
+    <Container maxWidth="xl">
+      <Toolbar disableGutters>
+      <Typography
+        variant="h6"
+      >
+        DTICheckBoxList
+      </Typography>
+      </Toolbar>
+    </Container>
+  </AppBar>
+  <Box
+    component="form"
+  >
+    <Container maxWidth="xl">
+      <Grid item xs={12} lg={12}>
+        <DTICheckBoxList
           items={state.items}
           selectedItems={state.itemsSelecteds}
           showSelectedAll={true}
@@ -75,13 +80,10 @@ class Example extends Component {
           backgroundColorCheckBoxSelected={'#f7f7f7'}
           onChange={handleChangeSelect}
         />
-  }
+      </Grid>
+    </Container>
+  </Box>
+</Container>)
 }
-```
-## Esquema de cores
-<p align="center">
-    <img alt="read before" src="screenshot2.png" />
-</p>
-## License
 
-MIT © [lucianodoria](https://github.com/lucianodoria)
+export default App
