@@ -10,21 +10,24 @@ import DTICheckBoxList from 'react-dticheckboxlist';
 
 const App = () => {
   const items =
-    [{
-      "id": "1",
-      "label": "Carros",
-    },
+  [{
+    "id": "1",
+    "label": "Cars",
+    "disabled": false,
+  },
 
-    {
-      "id": "2",
-      "label": "Bicicletas",
-    },
+  {
+    "id": "2",
+    "label": "Bicycles",
+    "disabled": false,
+  },
 
-    {
-      "id": "3",
-      "label": "Caminhões",
-    }
-    ]
+  {
+    "id": "3",
+    "label": "Trucks",
+    "disabled": true,
+  }
+  ]
 
   const itemsSelecteds =
     [
@@ -38,52 +41,55 @@ const App = () => {
       }
     ]
 
-    const [state, setState] = useState({
-      items: items,
-      itemsSelecteds: itemsSelecteds,
-    });
+  const [state, setState] = useState({
+    items: items,
+    itemsSelecteds: itemsSelecteds,
+  });
 
-    const handleChangeSelect = (prop) => {
-      setState({
-        ...state,
-        itemsSelecteds: prop,
-      });
-    };
+  const handleChangeSelect = (prop) => {
+
+    console.log(prop);
+
+    setState({
+      ...state,
+      itemsSelecteds: prop,
+    });
+  };
 
   return (
-  <Container>
-  <AppBar position="static">
-    <Container maxWidth="xl">
-      <Toolbar disableGutters>
-      <Typography
-        variant="h6"
+    <Container>
+      <AppBar position="static">
+        <Container maxWidth="xl">
+          <Toolbar disableGutters>
+            <Typography
+              variant="h6"
+            >
+              DTICheckBoxList
+            </Typography>
+          </Toolbar>
+        </Container>
+      </AppBar>
+      <Box
+        component="form"
       >
-        DTICheckBoxList
-      </Typography>
-      </Toolbar>
-    </Container>
-  </AppBar>
-  <Box
-    component="form"
-  >
-    <Container maxWidth="xl">
-      <Grid item xs={12} lg={12}>
-        <DTICheckBoxList
-          items={state.items}
-          selectedItems={state.itemsSelecteds}
-          showSelectedAll={true}
-          checkBoxSelectedAllColor={'#3f51b5'}
-          checkBoxSelectedAllLabelColor={'#3f51b5'}
-          checkBoxColor={'#3f51b5'}
-          checkBoxLabelColor={'#3f51b5'}
-          checkBoxCheckedColor={'#f95738'}
-          backgroundColorCheckBoxSelected={'#f7f7f7'}
-          onChange={handleChangeSelect}
-        />
-      </Grid>
-    </Container>
-  </Box>
-</Container>)
+        <Container maxWidth="xl">
+          <Grid item xs={12} lg={12}>
+            <DTICheckBoxList
+              items={state.items}
+              selectedItems={state.itemsSelecteds}
+              showSelectedAll={true}
+              labelSelectedAll={"Select All"}
+              checkBoxSelectedAllColor={'#3f51b5'}
+              checkBoxSelectedAllLabelColor={'#3f51b5'}
+              checkBoxColor={'#3f51b5'}
+              checkBoxLabelColor={'#3f51b5'}
+              backgroundColorCheckBoxSelected={'#f7f7f7'}
+              onChange={handleChangeSelect}
+            />
+          </Grid>
+        </Container>
+      </Box>
+    </Container>)
 }
 
 export default App

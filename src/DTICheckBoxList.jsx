@@ -63,27 +63,23 @@ const DTICheckBoxList = (props) => {
 
   const checkAllhandleChange = (event) => {
     const checked = event.target.checked
-    const newCheckedItem = [...props.selectedItems]
+    const newSelectedItems = [...props.selectedItems]
 
-    if (checked) {
-      props.items.forEach((dataItem) => {
-        let exist = false
+    props.items.forEach((dataItem) => {
+      if (dataItem.disabled) return
 
-        newCheckedItem.forEach(() => {
-          if (!exist) {
-            exist = newCheckedItem.some((v) => v.id === dataItem.id)
-          }
-        })
-
-        if (!exist) {
-          newCheckedItem.push(dataItem)
+      if (checked) {
+        if (!newSelectedItems.some((v) => v.id === dataItem.id)) {
+          newSelectedItems.push({ id: dataItem.id })
         }
-      })
-    } else {
-      newCheckedItem.splice(0)
-    }
+      } else {
+        var index = newSelectedItems.findIndex((x) => x.id === dataItem.id)
 
-    props.onChange(newCheckedItem)
+        newSelectedItems.splice(index, 1)
+      }
+    })
+
+    props.onChange(newSelectedItems)
 
     setStateCheckedAll(checked)
   }
@@ -105,7 +101,7 @@ const DTICheckBoxList = (props) => {
               }}
             />
           }
-          label='Selecionar todos'
+          label={props.labelSelectedAll}
         />
       )}
       <Paper className={classes.paper}>
@@ -119,6 +115,7 @@ const DTICheckBoxList = (props) => {
               <ListItem
                 key={index}
                 role='listitem'
+                disabled={data.disabled}
                 className={classes.checkBoxItem}
                 style={{
                   backgroundColor: checked
@@ -130,10 +127,12 @@ const DTICheckBoxList = (props) => {
               >
                 <ListItemIcon className={classes.listItemIcon}>
                   <Checkbox
+                    id={data.id}
                     classes={{ checked: props.checkBoxCheckedColor }}
                     checked={checked}
                     tabIndex={-1}
                     disableRipple={false}
+                    disabled
                     inputProps={{ 'aria-labelledby': labelId }}
                     style={{
                       color: props.checkBoxColor

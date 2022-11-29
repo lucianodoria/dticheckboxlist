@@ -1,7 +1,7 @@
 {
   "name": "react-dticheckboxlist",
-  "version": "1.0.3",
-  "description": "Componente React de lista com checkbox",
+  "version": "1.0.4",
+  "description": "React list component with checkbox",
   "author": {
     "name": "Luciano Dória",
     "email": "lucianodoria@gmail.com"

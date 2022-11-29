@@ -1,6 +1,6 @@
 # react-dticheckboxlist
 
-> Componente React de lista com checkbox
+> React list component with checkbox
 
 [![NPM](https://img.shields.io/npm/v/react-dticheckboxlist.svg)](https://www.npmjs.com/package/react-dticheckboxlist) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -13,7 +13,7 @@ npm install --save react-dticheckboxlist
     <img alt="read before" src="screenshot3.png" />
 </p>
 
-## Código de exemplo de como usar
+## Example code of how to use
 
 ```jsx
 import React, { Component } from 'react'
@@ -23,17 +23,20 @@ class Example extends Component {
   const items =
     [{
       "id": "1",
-      "label": "Carros",
+      "label": "Cars",
+      "disabled": false,
     },
 
     {
       "id": "2",
-      "label": "Bicicletas",
+      "label": "Bicycles",
+      "disabled": false,
     },
 
     {
       "id": "3",
-      "label": "Caminhões",
+      "label": "Trucks",
+      "disabled": true,
     }
     ]
 
@@ -64,21 +67,21 @@ class Example extends Component {
   render() {
     return
     <DTICheckBoxList
-          items={state.items}
-          selectedItems={state.itemsSelecteds}
-          showSelectedAll={true}
-          checkBoxSelectedAllColor={'#3f51b5'}
-          checkBoxSelectedAllLabelColor={'#3f51b5'}
-          checkBoxColor={'#3f51b5'}
-          checkBoxLabelColor={'#3f51b5'}
-          checkBoxCheckedColor={'#f95738'}
-          backgroundColorCheckBoxSelected={'#f7f7f7'}
-          onChange={handleChangeSelect}
+        items={state.items}
+        selectedItems={state.itemsSelecteds}
+        showSelectedAll={true}
+        labelSelectedAll={"Select All"}
+        checkBoxSelectedAllColor={'#3f51b5'}
+        checkBoxSelectedAllLabelColor={'#3f51b5'}
+        checkBoxColor={'#3f51b5'}
+        checkBoxLabelColor={'#3f51b5'}
+        backgroundColorCheckBoxSelected={'#f7f7f7'}
+        onChange={handleChangeSelect}
         />
   }
 }
 ```
-## Esquema de cores
+## Color Scheme
 <p align="center">
     <img alt="read before" src="screenshot2.png" />
 </p>
